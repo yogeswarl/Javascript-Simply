@@ -1,2 +1,2 @@
 # Javascript-Simply
-random Javascript to showoff skills
+ simple Javascript programs that were a done to understand the depth of this language.
