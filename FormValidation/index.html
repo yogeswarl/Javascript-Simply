@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+*{
+    margin:0;
+    padding:0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+form{
+    margin: 6% auto 6% 35%;
+    width:560px;
+}
+.error{
+    display:inline-block;
+    padding-left:20px;
+    color: red;
+}
+.egen
+{
+    padding-left:150px;
+    padding-bottom:20px;
+}
+.hidden {
+    display:none;
+}
+label{
+    display:block;
+    padding-bottom:15px;
+    color:#6e6e6e;
+    padding-left:20px;
+}
+input[type=text],
+[type=email],
+[type=number],
+[type=password]{
+    border:none;
+    width:300px;
+    border-bottom:1px solid #0059ff;
+    margin-bottom:20px;
+    padding:15px;
+    background-color:transparent; 
+}
+
+input::placeholder{
+    text-align: center;
+    opacity:0.7;
+}
+input[type=radio]{
+    margin: 0 20px;
+}
+button#submit{
+    border:none;
+    cursor: pointer;
+    padding:20px 100px;
+    background-color:#0059ff85 ;
+    width:330px; 
+    color:#3b3b3b;
+}
+button#submit:hover{
+    background-color:#0030b3;
+    color:#ffffff;
+
+}
+</style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+    <body>
+        <form>
+            <div>
+                <input class="name " type="text"  placeholder="Enter your name" required/>*
+                <span class="ename error hidden">Please Enter a Valid Name</span>
+            </div>
+            <div>
+                <input class="email" type="email"  placeholder="Enter your email" /> *
+                <span class="emsg error hidden">Please Enter a Valid Email</span>
+            </div>
+            <div>
+                <input class="age" type="number"  placeholder="Enter your Age" required  /> *
+                <span class="eage error hidden">Too young to enter</span>
+                <span class="euage error hidden">You are not immortal</span>
+            </div>
+
+            <div>
+                <input class="number" type="text"  required placeholder="Enter your Phone Number"/>
+                <span class="eno error hidden">Enter Only Numbers(0-9)</span>
+            </div>
+            <div>
+                <label>Gender</label>
+                <input type="radio" name="gender" id="male"><span> Male</span>
+                <input type="radio" name="gender" id="female"><span>Female</span> 
+                <span class="egen error hidden">Choose One atleast</span>
+            </div>
+            <div>
+                <input class="password" type="password"  placeholder="Enter Password"  minlength="8"/>*
+                <span class="epass error hidden">Match the Criteria </span>
+            </div>
+            <div>
+                <input class="repassword" type="password"  placeholder="Retype Password"   minlength="8"/>*
+                <span class="erepass error hidden">Mismatch</span>
+            </div>
+            <div>
+                <button id="submit">Submit</button>
+            </div>
+        </form>
+    </body>
+<script>
+    $(document).ready(function(){
+        var regexname= /^([a-zA-Z]{1,16})$/;
+        var regexmail = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+        var regexphone = /^([0-9]{0,10})$/; 
+        var regexpass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/; //matches passwords with atleast 1 small letter, 1 caps, 1 number with min size 6 to max size 20 
+        
+        function validate(inputname,classname,regex){
+            console.log(regex);
+            if(!($(`.${inputname}`).val().match(regex))){
+                
+                $(classname).removeClass('hidden').show();
+            }
+            else{
+                $(classname).addClass('hidden');
+            }
+        }
+
+        $('.name').on('blur',function(){
+            var inputName = $(this).attr('class');
+            var className = $(this).siblings();
+            validate('ename',className,regexname);
+        });
+        $('.email').on('blur',function(){
+            var inputMail = $(this).attr('class');
+            var classMail =  $(this).siblings();
+            validate(inputMail,classMail,regexmail);
+        });
+        $('.age').on('blur',function(){
+             if ($(this).val() < 18 ) {
+                $('.euage').addClass('hidden');
+                $('.eage').removeClass('hidden').show();
+            }
+            else if($(this).val() >=100 ){
+                $('.eage').addClass('hidden');
+                $('.euage').removeClass('hidden').show();
+            }
+            else{
+                $('.eage').addClass('hidden');
+                $('.euage').addClass('hidden');
+            }
+        });
+
+        $('.number').on('blur',function(){
+            var inputNumber = $(this).attr('class');
+            var classNumber =  $(this).siblings();
+            validate(inputNumber,classNumber,regexphone);
+        });
+
+        $('input[name=gender]').on('blur',function(){
+            if(!$("input[name='gender']:checked").val())
+            {
+                $('.egen').removeClass('hidden').show();
+            }
+            else{
+                $('.egen').addClass('hidden');
+            }
+        });
+
+        $('.password').on('blur',function(){
+            var inputPass = $(this).attr('class');
+            var classPass =  $(this).siblings();
+            validate(inputPass,classPass,regexpass);
+        });
+        $('.repassword').on('blur',function(){
+            if($(this).val() != $('.password').val())
+            {
+                $('.erepass').removeClass('hidden').show();
+            }
+            else{
+                $('.erepass').addClass('hidden');
+            }
+        });
+    });
+</script>
+</html>
