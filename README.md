@@ -1,2 +1,2 @@
 # Javascript-Simply
- simple Javascript programs that were a done to understand the depth of this language.
+This repository consists of Random HTML,CSS and JS projects that were done for conceptual knowledge
