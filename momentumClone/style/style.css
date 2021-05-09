@@ -1,0 +1,30 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body{
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  color: #000;
+}
+#id{
+font-size: 8rem;
+}
+h1{
+  margin-bottom: 3rem;
+}
+h2{
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+@media (max-width:768px){
+  #id{
+    font-size:4rem ;
+  }
+}
