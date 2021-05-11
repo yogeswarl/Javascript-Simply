@@ -6,7 +6,7 @@ const {v4: uuidv4} = require('uuid');
 
 
 app.set('view engine', 'ejs')
-app.set(express.static('public'));
+app.use(express.static('public'));
 
 app.get('/',(req,res) => {
   res.redirect(`/${uuidv4()}`);
@@ -17,7 +17,12 @@ app.get('/:room',(req,res) => {
 
 io.on('connection', socket => {
   socket.on('join-room',(roomId,userId)=> {
-    console.log(roomId,userId)
+    socket.join(roomId);
+    socket.broadcast.emit('user-connected',userId)
+    socket.on('disconnect', ()=>{
+      socket.broadcast.emit('user-disconnected',userId)
+    })
   })
+  
 })
 server.listen(3000)
