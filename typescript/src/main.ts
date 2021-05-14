@@ -4,4 +4,18 @@ const fullName = (givenName : string, familyName: string): string => {
   }
   return givenName.concat(familyName);
 }
-console.log(fullName("hello",""))
+
+interface User {
+  name: string;
+  age?: number;
+  welcomeMessage(): string;
+}
+
+const user : User = {
+  name: "Sup",
+  welcomeMessage(){
+    return "Hello" + name;
+  },
+}
+
+const username : string | null  = null
