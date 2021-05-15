@@ -19,3 +19,16 @@ const user : User = {
 }
 
 const username : string | null  = null
+const voidedName =():void => {
+  console.log("This is an example of void Data type")
+}
+
+const unknownVariable : unknown = "1";
+const unknownToString : string = unknownVariable as string;
+
+
+const someElement = document.querySelector('.element');
+someElement.addEventListener('click',(e) => {
+  const target = e.target as HTMLInputElement
+  console.log(target.value);
+})
