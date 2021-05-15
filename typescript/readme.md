@@ -20,3 +20,4 @@ Document Object Model Elements are declared already by typescript
 - Type assertion for `unknown` is used when you are not sure of the data type of a variable, This is a better alternative for type `any`.
 - Working with DOM, There are many common atributes to an element. But some elements have other attributes. You should declare them properly than to type assert the `any` type.
 - when using event listeners you will have to declare the event.target from its generic type to its specific type.
+- Enums are useful, it can only accept values from inside the enum datatype.

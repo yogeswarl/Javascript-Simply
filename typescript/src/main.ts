@@ -5,13 +5,13 @@ const fullName = (givenName : string, familyName: string): string => {
   return givenName.concat(familyName);
 }
 
-interface User {
+interface UserInterface {
   name: string;
   age?: number;
   welcomeMessage(): string;
 }
 
-const user : User = {
+const user : UserInterface = {
   name: "Sup",
   welcomeMessage(){
     return "Hello" + name;
@@ -32,3 +32,37 @@ someElement.addEventListener('click',(e) => {
   const target = e.target as HTMLInputElement
   console.log(target.value);
 })
+
+class User {
+  firstName: string;
+  lastName?: string;
+  constructor(firstName: string, lastName: string){
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+  getFullName(): string {
+    return this.firstName + ' ' + this.lastName;
+  }
+}
+const userclass = new User("Sup","S");
+console.log(userclass.getFullName);
+
+const addID = <T>(obj: T) => {
+const id = Math.random().toString(10);
+return {
+    ...obj,
+    id
+  };
+};
+
+const addIdToUser = {
+  name: 'Rose'
+}
+const result = addID(addIdToUser);
+console.log(result)
+
+enum Status {
+  NotStarted,
+  InProgress,
+  Done
+}
