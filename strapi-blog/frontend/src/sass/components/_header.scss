@@ -1,0 +1,16 @@
+.header{
+  padding: 20px;
+  background-color: wheat;
+  .logo{
+    margin-right: auto;
+  }
+  
+}
+.list{
+  display: flex;
+  &-item{   
+    & + &{
+      margin-left: 15px;
+    }
+  }
+}
