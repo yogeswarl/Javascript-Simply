@@ -1,0 +1,13 @@
+.fx{
+  display: flex;
+  &-wrap{
+    flex-wrap:wrap;
+  }
+  
+}
+.col-2 > *{
+  flex-basis: 47%;
+}
+.col-3 > *{
+  flex-basis: 31%;
+}

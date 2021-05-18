@@ -1,5 +1,6 @@
 import React from 'react';
 import fetch from 'isomorphic-fetch';
+import BlogListItem from './BlogListItem';
 class blogList extends React.Component {
   constructor() {
     super()
@@ -20,18 +21,17 @@ class blogList extends React.Component {
   }
   render() {
     return (
-      <>
+      <ul className="fx fx-wrap col-2">
         {
           this.state.blogs.map(({ id, blogTitle, blogContent, featuredImage, categories }) => {  
-            <div>
-              <h2>{blogTitle}</h2>
-              <p>{blogContent}</p>
-            </div>
-            }
-          )
+
+        return <li  className = "card">
+            <BlogListItem key = {id} blogTitle ={blogTitle} blogContent = {blogContent} featuredImage={featuredImage} categories = {categories}/>  
+          </li>
+          })
         }
 
-      </>
+      </ul>
     )
   }
 }
