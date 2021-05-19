@@ -8,10 +8,9 @@ const Header = () => {
       .then(
         (result) => {
           setItems(result);
-          console.log(result)
         },
         (error) => {
-          throw new Error("this is error")
+          throw new Error("this is error", error)
         }
       )
   }, [])

@@ -26,7 +26,7 @@ class blogList extends React.Component {
           this.state.blogs.map(({ id, blogTitle, blogContent, featuredImage, categories }) => {  
 
         return <li  className = "card">
-            <BlogListItem key = {id} blogTitle ={blogTitle} blogContent = {blogContent} featuredImage={featuredImage} categories = {categories}/>  
+            <BlogListItem key = {id} blogId = {id} blogTitle ={blogTitle} blogContent = {blogContent} featuredImage={featuredImage} categories = {categories}/>  
           </li>
           })
         }
