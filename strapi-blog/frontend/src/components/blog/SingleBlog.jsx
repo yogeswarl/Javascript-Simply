@@ -1,5 +1,6 @@
 import React from "react";
 import fetch from "isomorphic-fetch"
+import ReactMarkdown from 'react-markdown'
 class SingleBlog extends React.Component {
   constructor() {
     super()
@@ -27,7 +28,8 @@ class SingleBlog extends React.Component {
       <React.Fragment>
         <section className="section">
           <h2 className="mb-2">{blogTitle}</h2>
-          <p  className="mb-4">{blogContent}</p>
+          <p className="mb-4"></p>
+          <ReactMarkdown children={blogContent} />
           <img src={`http://localhost:1337${this.state.BlogImage}`} alt="" />
         </section>
       </React.Fragment>
