@@ -8,5 +8,16 @@
             <li><a href="/dashboard">Dashboard</a></li>
             <li><a href="/auth/logout">Logout</a></li>
         </ul>
+        {{#if name}}
+             <ul class="right hide-on-med-and-down">
+                <li> <a class="dropdown-trigger valign-wrapper" href="javascript:void(0)" data-target="dropdown1">
+                    <img src="{{profilePic}}" alt="profile image" class="circle responsive-img header-profile-img">
+                    {{name}}<i class="fas fa-caret-down right"></i></a></li>
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="/auth/logout">Logout</a></li>
+                    </ul>
+            </ul>
+            
+        {{/if}}
     </div>
 </nav>

@@ -6,3 +6,8 @@ p{
   margin-top: 50px;
   text-align: center;
 }
+.header-profile-img{
+  width: 30px;
+  height: auto;
+  margin-right: 8px;
+}

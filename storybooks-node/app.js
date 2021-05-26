@@ -1,12 +1,15 @@
 const path = require('path')
 const express = require("express");
 const dotenv = require("dotenv");
+const mongoose = require('mongoose');
 const morgon = require('morgan');
 const passport  = require('passport');
 const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const hbs = require('express-handlebars')
 // internal files
 const connectDB = require('./config/db');
+
 
 dotenv.config({ path: "./config/config.env" });
 
@@ -29,6 +32,11 @@ app.use(
 		secret: "key hodl",
 		resave: false,
 		saveUninitialized: true,
+		store: MongoStore.create({
+			mongoUrl: process.env.MONGO_URI,
+			mongooseConnection: mongoose.connection,
+			ttl: 14 * 24 * 60 * 60 // save session for 14 days
+		}),
 	})
 );
 //passport middleware
