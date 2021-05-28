@@ -18,15 +18,25 @@ router.post('/',ensureAuth,async (req,res) =>{
     res.render('error/500');
   }
 })
-// router.get('/:id',ensureAuth, async (req,res) =>{
-//   const id = req.params.id;
-//   console.log(id)
-//   const fetchStory = await Story.findById(id).lean();
-//   console.log(fetchStory)
-//   res.render('stories/view',{
-//     story: fetchStory,
-//   });
-// })
+router.get('/',ensureAuth, async (req,res) =>{
+  try{
+    const stories = await Story.find({status:'public'}).populate('user').sort({createdAt:'desc'}).lean();
+    console.log()
+    res.render('stories/index',{stories : stories});
+  }catch(err){
+    console.error(err);
+    res.render('error/500');
+  }
+})
+router.get('/:id',ensureAuth, async (req,res) =>{
+  const id = req.params.id;
+  console.log(id)
+  const fetchStory = await Story.findById(id).lean();
+  console.log(fetchStory)
+  res.render('stories/view',{
+    story: fetchStory,
+  });
+})
 
 
 module.exports = router

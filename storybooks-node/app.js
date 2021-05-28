@@ -25,9 +25,18 @@ app.use(express.json())
 if(process.env.NODE_ENV === 'development') {
 	app.use(morgon('dev'))
 }
+const {formatDate} =require('./helpers/hbs')
 
-
-app.engine("hbs", hbs({ defaultLayout: "main" , extname: "hbs" }));
+app.engine(
+	"hbs",
+	hbs({ 
+		helpers: {
+			formatDate
+		},
+		defaultLayout: "main",
+		extname: "hbs"
+	})
+);
 app.set('view engine', 'hbs')
 
 app.use(
