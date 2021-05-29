@@ -21,7 +21,6 @@ router.post('/',ensureAuth,async (req,res) =>{
 router.get('/',ensureAuth, async (req,res) =>{
   try{
     const stories = await Story.find({status:'public'}).populate('user').sort({createdAt:'desc'}).lean();
-    console.log()
     res.render('stories/index',{stories : stories});
   }catch(err){
     console.error(err);
@@ -30,12 +29,37 @@ router.get('/',ensureAuth, async (req,res) =>{
 })
 router.get('/:id',ensureAuth, async (req,res) =>{
   const id = req.params.id;
-  console.log(id)
   const fetchStory = await Story.findById(id).lean();
-  console.log(fetchStory)
   res.render('stories/view',{
     story: fetchStory,
   });
+})
+
+router.get('/edit/:id',ensureAuth, async(req,res) =>{
+  const story = await Story.findOne({_id:req.params.id}).lean();
+  if(!story){
+   return res.render('error/404') 
+  }
+  if(story.user != req.user.id){
+    res.redirect('/stories');
+  } else{
+    res.render('stories/edit',{story})
+  }
+})
+router.put('/:id',ensureAuth, async(req,res) =>{
+  let story = await Story.findById(req.params.id).lean();
+  if(!story){
+    res.render('error/404')
+  }
+  if(story.user != req.user.id){
+    res.redirect('/stories');
+  } else{
+    story = await Story.findOneAndUpdate({_id:req.params.id},req.body,{
+      new: true,
+      runValidators: true,
+    })
+    res.redirect('/dashboard')
+  }
 })
 
 

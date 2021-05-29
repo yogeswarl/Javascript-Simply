@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const morgon = require('morgan');
 const passport  = require('passport');
 const session = require('express-session');
+const methodOverride = require('method-override')
 const MongoStore = require('connect-mongo');
 const hbs = require('express-handlebars')
 // internal files
@@ -22,10 +23,19 @@ const app = express();
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
+
+app.use(methodOverride(function(req,res){
+	if(req.body && typeof req.body ==='object' && '_method' in req.body){
+		let method = req.body._method;
+		delete req.body._method;
+		return method;
+	}
+}))
+
 if(process.env.NODE_ENV === 'development') {
 	app.use(morgon('dev'))
 }
-const { formatDate, truncate, stripTags, editIcon } = require("./helpers/hbs");
+const { formatDate, truncate, stripTags, editIcon, select } = require("./helpers/hbs");
 
 app.engine(
 	"hbs",
@@ -34,7 +44,8 @@ app.engine(
 			formatDate,
 			truncate,
 			stripTags,
-			editIcon
+			editIcon,
+			select
 		},
 		defaultLayout: "main",
 		extname: "hbs"
