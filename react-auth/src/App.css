@@ -1,0 +1,226 @@
+/* typography */
+.title{
+  font-size: 32px;
+}
+.title-lg{
+  font-size: 36px;
+}
+.title-md{
+  font-size: 28px;
+}
+.title-sm{
+  font-size: 24px;
+}
+
+/* colors */
+:root{
+  --color-black: #181818;
+  --color-white: #ffffff;
+  --color-blue: #0a26b4;
+  --color-grey: #b7b7b7;
+  --color-red: #cb3131;
+}
+
+
+/* helpers */
+.tc-black{
+  color: var(--color-black)
+}
+.tc-invalid{
+  color: var(--color-red)
+}
+
+.ta-center{
+  text-align: center;
+}
+.ta-left{
+  text-align: left;
+}
+.ta-right{
+  text-align: right;
+}
+
+/* padding vertical */
+.pv-1{
+  padding-top:4px;
+  padding-bottom:4px;
+}
+.pv-2{
+  padding-top:8px;
+  padding-bottom:8px;
+}
+.pv-3{
+  padding-top:12px;
+  padding-bottom:12px;
+}
+.pv-4{
+  padding-top:16px;
+  padding-bottom:16px;
+}
+.pv-5{
+  padding-top:20px;
+  padding-bottom:20px;
+}
+/* padding horizontal */
+
+.ph-1{
+  padding-left:4px;
+  padding-right:4px;
+}
+.ph-2{
+  padding-left:8px;
+  padding-right:8px;
+}
+.ph-3{
+  padding-left:12px;
+  padding-right:12px;
+}
+.ph-4{
+  padding-left:16px;
+  padding-right:16px;
+}
+.ph-5{
+  padding-left:20px;
+  padding-right:20px;
+}
+/* margin vertical */
+
+.mv-1{
+  margin-top:4px;
+  margin-bottom:4px;
+}
+.mv-2{
+  margin-top:8px;
+  margin-bottom:8px;
+}
+.mv-3{
+  margin-top:12px;
+  margin-bottom:12px;
+}
+.mv-4{
+  margin-top:16px;
+  margin-bottom:16px;
+}
+.mv-5{
+  margin-top:20px;
+  margin-bottom:20px;
+}
+/* margin horizontal */
+
+.mh-1{
+  margin-left:4px;
+  margin-right:4px;
+}
+.mh-2{
+  margin-left:8px;
+  margin-right:8px;
+}
+.mh-3{
+  margin-left:12px;
+  margin-right:12px;
+}
+.mh-4{
+  margin-left:16px;
+  margin-right:16px;
+}
+.mh-5{
+  margin-left:20px;
+  margin-right:20px;
+}
+
+
+/* button */
+.btn{
+  font-size: 16px;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  padding: 12px;
+  width: 80px;
+  margin-top: 28px;
+}
+
+
+/* common */
+
+.height-100{
+  height: 100%;
+}
+.width-100{
+  width: 100%;
+}
+.fx{
+  display: flex;
+}
+.fx-c{
+  flex-direction: column;
+}
+.fx-grow{
+  flex-grow: 1;
+}
+.justify-center{
+  justify-content: center;
+}
+.align-center{
+  align-items: center;
+}
+    /* responsive common */
+  @media screen and (max-width:1200px){
+    .fx-nd{
+      display: flex;
+    }
+    
+    .fx-c-nd{
+      flex-direction: column;
+    }
+    .justify-center-nd{
+      justify-content: center;
+    }
+    .align-center-nd{
+      align-items: center;
+    }
+  }
+  @media screen and (max-width:800px){
+    .fx-m{
+      display: flex;
+    }
+    
+    .fx-c-m{
+      flex-direction: column;
+    }
+    .justify-center-m{
+      justify-content: center;
+    }
+    .align-center-m{
+      align-items: center;
+    }
+  }
+/* components */
+.input{
+  border-color: var(--color-grey);
+  max-width: 100%;
+  width: 320px;
+  height: 40px;
+  outline: none;
+  font-size: 24px;
+}
+.input::placeholder{
+  font-size: inherit;
+  color: var(--color-grey);
+}
+
+/* app  */
+.App{
+  height: 100vh;
+}
+
+.form-holder{
+  max-width: 600px;
+  height: 400px;
+  border:1px solid var(--color-black);
+}
+.form-item > span{
+  color: var(--color-red);
+}
+.form-item.invalid > .input{
+  border-color: var(--color-red);
+}
