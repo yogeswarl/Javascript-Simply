@@ -12,8 +12,8 @@ export const LoginForm = (props) =>{
           <h1 className="title-sm mv-2">Login</h1>
           <div className="form-holder fx fx-c justify-center pv-5 ph-5 width-100">
           <form onSubmit={handleSubmit(onSubmit)} className="form mh-auto fx fx-c align-center">
-            <div className={`form-item fx fx-grow mv-4 ${errors.firstName ? "invalid" : ""}`}>
-              <p className ="mh-4">Username</p>
+            <div className={`form-item fx fx-c-m fx-reset-m fx-grow mv-4 align-center ${errors.firstName ? "invalid" : ""}`}>
+              <p className ="mh-4 mh-reset-m form-label ta-right">Username</p>
               <input type="text" aria-invalid={errors.firstName ? "true" : "false"} placeholder="Enter Username"
               className="input ph-2 pv-2"
               {...register("firstName", {
@@ -29,12 +29,12 @@ export const LoginForm = (props) =>{
                 <span role="alert">{errors.firstName?.message}</span>
               )}
             </div>
-            <div className={`form-item fx fx-grow ${errors.password ? "invalid" : ""}`}>
-            <p className ="mh-4">Password</p>
+            <div className={`form-item fx fx-c-m fx-reset-m fx-grow mv-4 align-center ${errors.password ? "invalid" : ""}`}>
+            <p className ="mh-4 mh-reset-m form-label ta-right">Password</p>
             <input
               aria-invalid={errors.password ? "true" : "false"}
               placeholder="Enter Password"
-              className="input ph-2 pv-2"
+              className="input ph-2  pv-2"
               {...register("password", {
                 required: "password can't be empty",
                 minLength:{

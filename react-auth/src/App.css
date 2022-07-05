@@ -11,6 +11,13 @@
 .title-sm{
   font-size: 24px;
 }
+.logo{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  border: 2px solid var(--color-black);
+  padding: 16px 20px;
+}
 
 /* colors */
 :root{
@@ -127,6 +134,43 @@
   margin-left:20px;
   margin-right:20px;
 }
+@media screen and (max-width: 1200px){
+  .mh-reset-nd{
+    margin-left: 0;
+    margin-right: 0;
+   }
+   .mv-reset-nd{
+    margin-top: 0;
+    margin-bottom: 0;
+   }
+   .ph-reset-nd{
+    padding-left: 0;
+    padding-right: 0;
+   }
+   .pv-reset-nd{
+    padding-top: 0;
+    padding-bottom: 0;
+   }
+}
+@media screen and (max-width: 800px){
+  .mh-reset-m{
+    margin-left: 0;
+    margin-right: 0;
+   }
+   .mv-reset-m{
+    margin-top: 0;
+    margin-bottom: 0;
+   }
+   .ph-reset-m{
+    padding-left: 0;
+    padding-right: 0;
+   }
+   .pv-reset-m{
+    padding-top: 0;
+    padding-bottom: 0;
+   }
+}
+ 
 
 
 /* button */
@@ -168,7 +212,9 @@
     .fx-nd{
       display: flex;
     }
-    
+    .fx-reset-nd{
+      display: block;
+    }
     .fx-c-nd{
       flex-direction: column;
     }
@@ -183,7 +229,9 @@
     .fx-m{
       display: flex;
     }
-    
+    .fx-reset-m{
+      display: block;
+    }
     .fx-c-m{
       flex-direction: column;
     }
@@ -196,7 +244,7 @@
   }
 /* components */
 .input{
-  border-color: var(--color-grey);
+  border: 1px solid var(--color-grey);
   max-width: 100%;
   width: 320px;
   height: 40px;
@@ -215,12 +263,33 @@
 
 .form-holder{
   max-width: 600px;
-  height: 400px;
+  height: max-content;
   border:1px solid var(--color-black);
+}
+.form-item{
+  position: relative;
 }
 .form-item > span{
   color: var(--color-red);
+  position: absolute;
+  top: calc(100% + 4px);
+  left:150px;
 }
+
 .form-item.invalid > .input{
   border-color: var(--color-red);
+}
+.form-label{
+  width: 120px;
+  font-size: 18px;
+}
+@media screen and (max-width:800px) {
+  .form-item > span{
+    left: 0;
+  }
+  .form-label{
+    width: 100%;
+    text-align: left;
+    margin-bottom: 6px;
+  }
 }

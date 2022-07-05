@@ -1,5 +1,9 @@
 /* reset and base */
-
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -20,7 +24,8 @@ button{
   cursor: pointer;
 }
 a{
-text-decoration: none;
+  text-decoration: none;
+  color: inherit;
 }
 li{
   list-style: none;
