@@ -1,10 +1,15 @@
 import React, { Fragment,useRef } from "react";
 import { useForm } from "react-hook-form";
-
 export const SignUp = (props) =>{
-  const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }, watch } = useForm();
   const onSubmit = (data) =>{
-    console.log(data);
+    console.log(data);  
+    fetch('/signup').then(data => {
+      console.log(data)
+      window.location = "/login"
+    }).catch(err =>{
+      console.log(err)
+    })
   }
   const password = useRef({});
   password.current = watch("password", "");

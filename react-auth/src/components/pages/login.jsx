@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { useForm } from "react-hook-form";
 
 export const LoginForm = (props) =>{
-  const { register, handleSubmit, formState: { errors }, watch, reset } = useForm();
+  const { register, handleSubmit, formState: { errors }} = useForm();
   const onSubmit = (data) =>{
     console.log(data);
   }
