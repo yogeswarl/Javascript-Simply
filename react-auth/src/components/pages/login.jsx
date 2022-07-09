@@ -1,10 +1,15 @@
 import React, { Fragment } from "react";
 import { useForm } from "react-hook-form";
-
+import { Link } from "react-router-dom";
 export const LoginForm = (props) =>{
+  const {setmodalVisibility} = props
   const { register, handleSubmit, formState: { errors }} = useForm();
   const onSubmit = (data) =>{
     console.log(data);
+  }
+  const closePopup = (e) =>{
+    e.preventDefault()
+    setmodalVisibility("signup")
   }
   return(
     <Fragment>
@@ -49,6 +54,7 @@ export const LoginForm = (props) =>{
             </div>
             <div className="ta-center">
             <button className="btn" type="submit">Login</button>
+            <p className="mv-1"><Link to="/" className="mh-2 tc-invalid" onClick={closePopup}>Sign up</Link>if you don't have an account</p>
             </div>
           </form>
           </div>

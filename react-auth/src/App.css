@@ -11,13 +11,6 @@
 .title-sm{
   font-size: 24px;
 }
-.logo{
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  border: 2px solid var(--color-black);
-  padding: 16px 20px;
-}
 
 /* colors */
 :root{
@@ -28,7 +21,13 @@
   --color-red: #cb3131;
 }
 
-
+.logo{
+  /* position: absolute;
+  top: 20px;
+  left: 20px; */
+  border: 2px solid var(--color-black);
+  padding: 16px 20px;
+}
 /* helpers */
 .tc-black{
   color: var(--color-black)
@@ -185,7 +184,17 @@
 
 
 /* common */
-
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
+.clearfix:after{
+  display: block;
+  content: '';
+  clear: both;
+}
 .height-100{
   height: 100%;
 }
@@ -200,6 +209,9 @@
 }
 .fx-grow{
   flex-grow: 1;
+}
+.justify-space-between {
+  justify-content: space-between;
 }
 .justify-center{
   justify-content: center;
@@ -264,7 +276,7 @@
 .form-holder{
   max-width: 600px;
   height: max-content;
-  border:1px solid var(--color-black);
+  /* border:1px solid var(--color-black); */
 }
 .form-item{
   position: relative;
@@ -275,12 +287,11 @@
   top: calc(100% + 4px);
   left:150px;
 }
-
 .form-item.invalid > .input{
   border-color: var(--color-red);
 }
 .form-label{
-  width: 120px;
+  width: 140px;
   font-size: 18px;
 }
 @media screen and (max-width:800px) {
@@ -292,4 +303,37 @@
     text-align: left;
     margin-bottom: 6px;
   }
+}
+
+
+/* modal */
+
+.modal {
+  position: fixed;
+  padding: 12px 16px;
+  min-height: 60vh;
+  max-width: 700px;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%,-50%);
+  background-color: var(--color-white);
+  box-shadow: 0px 0px 11px var(--color-grey)
+}
+.modal-close{
+  font-size: 20px;
+}
+.backdrop{
+  background-color: rgba(255, 255, 255, 0.4);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  left: 0;
+  top: 0;
+}
+
+.header{
+  padding: 12px 14px;
 }

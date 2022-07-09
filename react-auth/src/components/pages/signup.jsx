@@ -1,12 +1,24 @@
-import React, { Fragment,useRef } from "react";
+import React, { Fragment,useRef,useState } from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 export const SignUp = (props) =>{
+  const {setmodalVisibility} = props
   const { register, handleSubmit, formState: { errors }, watch } = useForm();
+  const checkforExpert = watch("expert", false);
+
+  React.useEffect(() => {
+    const subscription = watch((value, { name, type }) => console.log(value, name, type));
+    return () => subscription.unsubscribe();
+  }, [watch]);
+  const closePopup = (e) =>{
+    e.preventDefault()
+    setmodalVisibility("signup")
+  }
   const onSubmit = (data) =>{
     console.log(data);  
     fetch('/signup').then(data => {
       console.log(data)
-      window.location = "/login"
+      // window.location = "/login"
     }).catch(err =>{
       console.log(err)
     })
@@ -19,6 +31,14 @@ export const SignUp = (props) =>{
           <h1 className="title-sm mv-2">Signup</h1>
           <div className="form-holder fx fx-c justify-center pv-5 ph-5 width-100">
           <form onSubmit={handleSubmit(onSubmit)} className="form mh-auto fx fx-c align-center">
+            <div className={`form-item mb-8 fx fx-reset-m fx-grow mv-4 align-center ${errors.radioSelect ? "invalid" : ""}`} >
+                <h4 className="heading-sm tc-primary fw-medium mr-4">Are you an</h4>
+                <div className="mh-3">
+                  <input type="checkbox" className="mh-2" value="expert" id="expert"
+                    {...register("expert")}/>
+                  <label htmlFor="expert">Expert</label>
+                </div>
+            </div>
             <div className={`form-item fx fx-c-m fx-reset-m fx-grow mv-4 align-center ${errors.email ? "invalid" : ""}`}>
               <p className ="mh-4 mh-reset-m form-label ta-right">email</p>
               <input type="text" aria-invalid={errors.email ? "true" : "false"} placeholder="Enter email"
@@ -94,6 +114,7 @@ export const SignUp = (props) =>{
             </div>
             <div className="ta-center">
               <button className="btn" type="submit">SignUp</button>
+              <p className="mv-1"><Link to="/" className="mh-2 tc-invalid" onClick={closePopup}>Sign up</Link>if you don't have an account</p>
             </div>
           </form>
           </div>
