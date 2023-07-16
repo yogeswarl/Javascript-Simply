@@ -30,7 +30,7 @@ const websiteName = prompt('enter the website you want to convert as pdf?');
   })
   await page.coverage.stopCSSCoverage();
   await page.coverage.stopJSCoverage();
-  await page.pdf({ path: 'test.pdf', format: 'a4' });  
+  await page.pdf({ path: `${new Date()}`, format: 'a4' });  
   console.log('page is ready to view')
   await browser.close();
 })();
